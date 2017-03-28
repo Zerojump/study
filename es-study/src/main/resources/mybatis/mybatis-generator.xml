@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="MBG" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="javaFileEncoding" value="UTF-8" />
+
+        <!--mybaits代码生成器生成Example类替换成Criteria -->
+		<!--<plugin type="org.mybatis.mybaits.plugins.RenameExampleClassPlugin">-->
+			<!--<property name="searchString" value="[e|E]xample$" />-->
+			<!--<property name="replaceString" value="Criteria" />-->
+		<!--</plugin>-->
+		<!--mybaits插件生成toString方法 -->
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!--<plugin type="PaginationPlugin" />-->
+
+        <!--下面的配置使得生成的model中可以使用数据库中的Comment对字段进行注释-->
+        <!--<commentGenerator type="org.mybatis.generator.internal.DefaultCommentGenerator">-->
+        <commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<!-- 数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.38.128:3306/taotao-emall"
+			userId="root"
+			password="mysql">
+		</jdbcConnection>
+
+		<!--默认false
+           Java type resolver will always use java.math.BigDecimal if the database column is of type DECIMAL or NUMERIC.
+         -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- generate model -->
+		<javaModelGenerator targetPackage="com.cmy.model" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+<!--
+        application.properties
+        mybatis.mapper-locations=classpath*:org/springboot/sample/mapper/sql/mysql/*Mapper.xml
+        mybatis.type-aliases-package=org.springboot.sample.entity
+        -->
+        <!--此处的targetPackage，应该和javaClientGenerator元素的targetPackage属性相同-->
+        <sqlMapGenerator targetPackage="com.cmy.mapper" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- generate mapper, 可以是 ANNOTATEDMAPPER(注解), XMLMAPPER(xml), MIXEDMAPPER(不知道) --> <!--测试三者-->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.cmy.mapper"
+			 implementationPackage="com.cmy.mapper.impl"
+			targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等-->
+
+		<table tableName="tb_item" domainObjectName="Item">
+			<generatedKey column="id" sqlStatement="MySql"/>
+		</table>
+
+	</context>
+</generatorConfiguration>  
