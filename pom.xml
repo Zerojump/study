@@ -13,6 +13,7 @@
         <module>es-study</module>
         <module>rabbitmq-study</module>
         <module>design-pattern</module>
+        <module>shiro-study</module>
     </modules>
 
     <properties>
