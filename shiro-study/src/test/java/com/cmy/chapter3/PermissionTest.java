@@ -1,6 +1,8 @@
 package com.cmy.chapter3;
 
 import com.cmy.BaseTest;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.junit.Test;
 
 /**
  * @author chenmingyi
@@ -9,4 +11,12 @@ import com.cmy.BaseTest;
  */
 public class PermissionTest extends BaseTest {
 
+    @Test
+    public void testIsPermitted() throws Exception {
+        subject = getSubject("classpath:chapter3/shiro-permission.ini");
+        token = new UsernamePasswordToken("ruby", "ruby123");
+        subject.login(token);
+
+
+    }
 }
