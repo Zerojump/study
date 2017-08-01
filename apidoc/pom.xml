@@ -11,5 +11,38 @@
 
     <artifactId>apidoc</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.cmy</groupId>
+            <artifactId>apidoc-generator-maven-plugin</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.cmy</groupId>
+                <artifactId>apidoc-generator-maven-plugin</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<artifactId>study</artifactId>-->
+                        <!--<groupId>com.cmy</groupId>-->
+                        <!--<version>0.0.1-SNAPSHOT</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+                <configuration>
+                    <!--D:\ideaworkspace\study\apidoc\target-->
+                    <apiDocFileName>ApiDocContent</apiDocFileName>
+                    <apiDocDir>src\test\java</apiDocDir>
+                    <!--<apiDocPackage>com.cmy.doc.doc01</apiDocPackage>-->
+                    <apiSources>
+                        <apiSource>com.cmy.controller.SpringMvcAnnotationClass</apiSource>
+                    </apiSources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
