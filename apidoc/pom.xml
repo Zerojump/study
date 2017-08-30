@@ -11,11 +11,15 @@
 
     <artifactId>apidoc</artifactId>
 
+    <properties>
+        <apidoc-javadoc-generator.version>0.0.1-SNAPSHOT</apidoc-javadoc-generator.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.cmy</groupId>
-            <artifactId>apidoc-generator-maven-plugin</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>apidoc-javadoc-generator-core</artifactId>
+            <version>${apidoc-javadoc-generator.version}</version>
         </dependency>
     </dependencies>
 
@@ -23,8 +27,8 @@
         <plugins>
             <plugin>
                 <groupId>com.cmy</groupId>
-                <artifactId>apidoc-generator-maven-plugin</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <artifactId>apidoc-javadoc-generator-maven-plugin</artifactId>
+                <version>${apidoc-javadoc-generator.version}</version>
                 <!--<dependencies>-->
                     <!--<dependency>-->
                         <!--<artifactId>study</artifactId>-->
