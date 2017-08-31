@@ -14,7 +14,7 @@
         <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-core</artifactId>
+            <artifactId>shiro-spring</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>

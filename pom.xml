@@ -18,6 +18,7 @@
         <module>spring-security-study</module>
         <module>apidoc</module>
         <module>zookeeper-study</module>
+        <module>redis-study</module>
         <module>sso-test</module>
     </modules>
 
@@ -42,6 +43,7 @@
         <spring-boot.version>1.5.6.RELEASE</spring-boot.version>
         <spring-security.version>4.2.2.RELEASE</spring-security.version>
         <zookeeper.version>3.4.10</zookeeper.version>
+        <jedis.version>2.9.0</jedis.version>
         <io.jsonwebtoken.jjwt.version>0.7.0</io.jsonwebtoken.jjwt.version>
     </properties>
 
@@ -136,6 +138,18 @@
             <!-- shiro shiro-core -->
             <dependency>
                 <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-core</artifactId>
                 <version>${shiro.version}</version>
                 <exclusions>
@@ -216,6 +230,14 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+
+            <!-- redis.clients/jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>

@@ -64,4 +64,12 @@ public class SessionController {
     public String readAny() {
         return "Can read any";
     }
+
+    /**
+     *
+     */
+    @RequestMapping(value = "403", method = RequestMethod.GET)
+    public String unAuthorization() {
+        return "unAuthorization";
+    }
 }
