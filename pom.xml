@@ -44,6 +44,7 @@
         <spring-security.version>4.2.2.RELEASE</spring-security.version>
         <zookeeper.version>3.4.10</zookeeper.version>
         <jedis.version>2.9.0</jedis.version>
+        <unirest.version>1.4.9</unirest.version>
         <io.jsonwebtoken.jjwt.version>0.7.0</io.jsonwebtoken.jjwt.version>
     </properties>
 
@@ -238,6 +239,12 @@
                 <version>${jedis.version}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java -->
+            <dependency>
+                <groupId>com.mashape.unirest</groupId>
+                <artifactId>unirest-java</artifactId>
+                <version>${unirest.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
