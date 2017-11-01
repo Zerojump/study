@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>study</artifactId>
-        <groupId>com.cmy</groupId>
+        <groupId>pers.cmy</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -19,7 +19,13 @@
         <dependency>
             <groupId>com.cmy</groupId>
             <artifactId>apidoc-javadoc-generator-core</artifactId>
-            <version>${apidoc-javadoc-generator.version}</version>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
 
@@ -28,25 +34,35 @@
             <plugin>
                 <groupId>com.cmy</groupId>
                 <artifactId>apidoc-javadoc-generator-maven-plugin</artifactId>
-                <version>${apidoc-javadoc-generator.version}</version>
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<artifactId>study</artifactId>-->
-                        <!--<groupId>com.cmy</groupId>-->
-                        <!--<version>0.0.1-SNAPSHOT</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
+                <version>0.0.1</version>
+                <dependencies>
+                    <!-- 插件依赖于spring mvc，如果自己项目里引入了别的依赖也可以在这里添加 -->
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-web</artifactId>
+                        <version>${spring.version}</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                        <version>${spring.version}</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
-                    <!--D:\ideaworkspace\study\apidoc\target-->
-                    <apiDocFileName>ApiDocContent</apiDocFileName>
                     <apiDocDir>src\test\java</apiDocDir>
-                    <!--<apiDocPackage>com.cmy.doc.doc01</apiDocPackage>-->
+                    <apiDocPackage>com.cmy.doc.doc02</apiDocPackage>
+                    <gsonFactory>com.cmy.factory.gson.GsonFactory</gsonFactory>
+                    <gsonFactoryMethod>gson</gsonFactoryMethod>
+                    <apiErrors>
+                        <apiError>com.cmy.factory.resp.ErrorRespFactory</apiError>
+                    </apiErrors>
+
                     <apiSources>
-                        <apiSource>com.cmy.controller.SpringMvcAnnotationClass</apiSource>
+                        <apiSource>com.cmy.controller.UserController</apiSource>
                     </apiSources>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
