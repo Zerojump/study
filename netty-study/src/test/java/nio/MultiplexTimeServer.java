@@ -10,6 +10,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.time.LocalDateTime;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -55,7 +56,7 @@ public class MultiplexTimeServer extends BaseTimeHandle implements Runnable {
     protected void handleInput(SelectionKey key) throws IOException {
         //A key is valid upon creation and remains so until it is cancelled,its channel is closed, or its selector is closed.
         if (key.isValid()) {
-            LOG.info("Time server key.isValid");
+            //LOG.info("Time server key.isValid");
 
             //Tests whether this key's channel is ready to accept a new socket connection.
             if (key.isAcceptable()) {
@@ -68,7 +69,7 @@ public class MultiplexTimeServer extends BaseTimeHandle implements Runnable {
             }
 
             if (key.isReadable()) {
-                LOG.info("Time server key isReadable");
+                //LOG.info("Time server key isReadable");
 
                 SocketChannel sc = (SocketChannel) key.channel();
                 ByteBuffer readBuffer = ByteBuffer.allocate(1024);
@@ -80,7 +81,7 @@ public class MultiplexTimeServer extends BaseTimeHandle implements Runnable {
                     readBuffer.get(bytes);
                     String body = new String(bytes, "utf8");
                     LOG.info("Time server receive body = " + body);
-                    doWrite(sc, body);
+                    doWrite(sc, "QUERY TIME ORDER".equalsIgnoreCase(body) ? LocalDateTime.now().toString() : "bad order");
                 } else if (readBytes < 0) {
                     key.cancel();
                     sc.close();

@@ -21,12 +21,6 @@ public class TimeServer {
         TimeClientHandle clientHandle = new TimeClientHandle(null, 9502, latch);
         new Thread(clientHandle, "clientHandle").start();
 
-        latch.await(1, TimeUnit.MINUTES);
-    }
-
-    @Test
-    public void testClient() throws Exception {
-        //TimeClientHandle clientHandle = new TimeClientHandle(null, 9502);
-        //new Thread(clientHandle, "clientHandle").start();
+        latch.await(30, TimeUnit.SECONDS);
     }
 }

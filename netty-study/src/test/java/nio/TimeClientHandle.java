@@ -59,7 +59,7 @@ public class TimeClientHandle extends BaseTimeHandle implements Runnable {
     @Override
     protected void handleInput(SelectionKey key) throws IOException {
         if (key.isValid()) {
-            LOG.info("Time client key isValid");
+            //LOG.info("Time client key isValid");
 
             SocketChannel sc = (SocketChannel) key.channel();
             if (key.isConnectable()) {
@@ -75,7 +75,7 @@ public class TimeClientHandle extends BaseTimeHandle implements Runnable {
             }
 
             if (key.isReadable()) {
-                LOG.info("Time client key isReadable");
+                //LOG.info("Time client key isReadable");
 
                 ByteBuffer readBuffer = ByteBuffer.allocate(1024);
                 int readBytes = sc.read(readBuffer);
@@ -84,7 +84,9 @@ public class TimeClientHandle extends BaseTimeHandle implements Runnable {
                     byte[] bytes = new byte[readBuffer.remaining()];
                     readBuffer.get(bytes);
                     String body = new String(bytes, "utf8");
-                    System.out.println("body = " + body);
+                    LOG.info("body = " + body);
+
+                    LOG.info("stop...");
                     stop();
                 } else if (readBytes < 0) {
                     key.cancel();
@@ -96,9 +98,15 @@ public class TimeClientHandle extends BaseTimeHandle implements Runnable {
 
     private void doConnect() throws IOException {
         LOG.info("Time client doConnect");
+
+        //socketChannel.connect(new InetSocketAddress(host, port));
+        //socketChannel.register(selector, SelectionKey.OP_CONNECT);
+
         if (socketChannel.connect(new InetSocketAddress(host, port))) {
+            socketChannel.register(selector, SelectionKey.OP_READ);
+            doWrite(socketChannel, "QUERY123456");
+        } else {
             socketChannel.register(selector, SelectionKey.OP_CONNECT);
-            doWrite(socketChannel, "QUERY TIME ORDER");
         }
     }
 
