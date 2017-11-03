@@ -23,4 +23,22 @@ public class AsyncTimeTest {
 
         latch.await(30, TimeUnit.SECONDS);
     }
+
+    @Test
+    public void name() throws Exception {
+        //byte[] array = new byte[4];
+        //int index = 1;
+        //(array[index]     & 0xff) << 24 |
+        //        (array[index + 1] & 0xff) << 16 |
+        //        (array[index + 2] & 0xff) <<  8 |
+        //        array[index + 3] & 0xff;
+        //System.out.println();
+    }
+
+    @Test
+    public void name2() throws Exception {
+        byte b = -2;
+        System.out.println(b << 1);
+
+    }
 }
