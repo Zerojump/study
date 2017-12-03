@@ -7,7 +7,7 @@ import java.util.Properties;
  * @author Lankidd
  * @date 2017/5/7
  * <p>
- * To change this template use File | Settings | File and Code Templates | Includes .
+ * To change this templates use File | Settings | File and Code Templates | Includes .
  */
 public class UserKafkaProducer extends Thread {
     private final KafkaProducer<Integer, String> producer;

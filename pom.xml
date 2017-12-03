@@ -22,6 +22,8 @@
         <module>sso-test</module>
         <module>jvm-study</module>
         <module>netty-study</module>
+        <module>hadoop-study</module>
+        <module>websocket-study</module>
     </modules>
 
     <properties>
@@ -52,6 +54,8 @@
         <io.jsonwebtoken.jjwt.version>0.7.0</io.jsonwebtoken.jjwt.version>
         <jboss-netty.version>3.10.6.Final</jboss-netty.version>
         <netty.version>4.1.16.Final</netty.version>
+        <hadoop.version>2.6.0-cdh5.7.0</hadoop.version>
+        <redisson.version>3.5.5</redisson.version>
     </properties>
 
     <dependencies>
@@ -63,11 +67,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.slf4j/log4j-over-slf4j -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${log4j-over-slf4j.version}</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>log4j-over-slf4j</artifactId>-->
+        <!--<version>${log4j-over-slf4j.version}</version>-->
+        <!--</dependency>-->
 
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
@@ -252,6 +256,12 @@
                 <version>${jedis.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java -->
             <dependency>
                 <groupId>com.mashape.unirest</groupId>
@@ -278,6 +288,12 @@
                 <version>${netty.version}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>

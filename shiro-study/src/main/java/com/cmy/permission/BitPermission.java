@@ -21,7 +21,7 @@ import org.apache.shiro.authz.Permission;
  * @author Lankidd
  * @date 2017/5/14
  * <p>
- * To change this template use File | Settings | File and Code Templates | Includes .
+ * To change this templates use File | Settings | File and Code Templates | Includes .
  */
 public class BitPermission implements Permission {
     private String resourceIdentify;

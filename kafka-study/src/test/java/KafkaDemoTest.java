@@ -8,13 +8,17 @@ import org.apache.kafka.common.TopicPartition;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Lankidd
  * @date 2017/5/7
  * <p>
- * To change this template use File | Settings | File and Code Templates | Includes .
+ * To change this templates use File | Settings | File and Code Templates | Includes .
  */
 public class KafkaDemoTest {
     volatile boolean RUNNING = true;

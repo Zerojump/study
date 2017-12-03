@@ -1,7 +1,12 @@
 package com.cmy.realm;
 
 import com.cmy.permission.BitPermission;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.authz.permission.WildcardPermission;
@@ -13,7 +18,7 @@ import org.apache.shiro.subject.PrincipalCollection;
  * <p>@version 1.0
  * <p>Date: 2017/5/14
  * <p>
- * To change this template use File | Settings | File and Code Templates | Includes .
+ * To change this templates use File | Settings | File and Code Templates | Includes .
  */
 public class MyAuthorizingRealm extends AuthorizingRealm {
     @Override

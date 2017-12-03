@@ -1,4 +1,8 @@
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.BuiltinExchangeType;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.QueueingConsumer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -86,7 +90,7 @@ import java.util.UUID;
  * @author Lankidd
  * @date 2017/4/27
  * <p>
- * To change this template use File | Settings | File and Code Templates | Includes .
+ * To change this templates use File | Settings | File and Code Templates | Includes .
  */
 public class RabbitMQDemo {
     static Channel channel;

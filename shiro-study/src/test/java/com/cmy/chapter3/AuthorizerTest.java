@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * <p>@version 1.0
  * <p>Date: 2017/5/14
  * <p>
- * To change this template use File | Settings | File and Code Templates | Includes .
+ * To change this templates use File | Settings | File and Code Templates | Includes .
  */
 public class AuthorizerTest extends BaseTest {
 
