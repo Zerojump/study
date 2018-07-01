@@ -22,6 +22,7 @@ import java.util.Set;
  */
 public class KafkaDemoTest {
     volatile boolean RUNNING = true;
+    String brokerList = "192.168.47.129:9092,192.168.47.130:9092,192.168.47.131:9092";
     //static Producer<String, String> producer;
     //static {
     //    Map<String, Object> props = new HashMap<>(3);
@@ -43,8 +44,8 @@ public class KafkaDemoTest {
     @Test
     public void testSimpleProducer() throws Exception {
         Map<String, Object> props = new HashMap<>(3);
-        //props.put("metadata.broker.list", "192.168.38.130:9092");
-        props.put("bootstrap.servers", "192.168.38.130:9092");
+        props.put("metadata.broker.list", brokerList);
+        props.put("bootstrap.servers", brokerList);
         props.put("acks", "all");
         props.put("retries ", 1);
         props.put("buffer.memory", 33554432);
@@ -54,7 +55,7 @@ public class KafkaDemoTest {
         Producer<String, Object> producer = new KafkaProducer<>(props);
         for (int i = 0; i < 3; i++) {
             LocalDateTime now = LocalDateTime.now();
-            producer.send(new ProducerRecord<>("kafkatopic01", Integer.toString(i), now.toString()));
+            producer.send(new ProducerRecord<>("test", Integer.toString(i), now.toString()));
             System.out.println("now = " + now);
         }
         producer.close();
@@ -63,7 +64,8 @@ public class KafkaDemoTest {
     @Test
     public void testSimpleConsumer() throws Exception {
         Map<String, Object> props = new HashMap<>(3);
-        props.put("bootstrap.servers", "192.168.38.130:9092");
+        props.put("metadata.broker.list", brokerList);
+        props.put("bootstrap.servers", brokerList);
         props.put("group.id", "test");//不同ID 可以同时订阅消息
         props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "1000");
@@ -71,7 +73,7 @@ public class KafkaDemoTest {
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Arrays.asList("kafkatopic01"));//订阅TOPIC
+        consumer.subscribe(Arrays.asList("test"));//订阅TOPIC
         try {
             while (RUNNING) {//轮询
                 ConsumerRecords records = consumer.poll(Long.MAX_VALUE);

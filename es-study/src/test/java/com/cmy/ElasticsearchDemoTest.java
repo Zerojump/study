@@ -1,9 +1,14 @@
 package com.cmy;
 
+import com.cmy.dto.MusicDto;
+import com.google.gson.Gson;
+import org.elasticsearch.action.bulk.BulkRequestBuilder;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.aggregations.Aggregation;
@@ -19,10 +24,11 @@ import org.junit.Test;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Arrays;
 import java.util.Map;
 
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
-
+import static org.elasticsearch.index.query.QueryBuilders.*;
 /**
  * Created by Lankidd on 2017/3/8.
  */
@@ -37,6 +43,8 @@ public class ElasticsearchDemoTest {
     private static final String joinDate = "join_date";
     private static final String salary = "salary";
 
+    private static final Gson gson = new Gson();
+
 
     private static final TransportClient client;
 
@@ -47,7 +55,7 @@ public class ElasticsearchDemoTest {
                 .build();
         try {
             client = new PreBuiltTransportClient(settings)
-                    .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("192.168.38.130"), 9300));
+                    .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("192.168.47.128"), 9300));
         } catch (UnknownHostException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -57,6 +65,17 @@ public class ElasticsearchDemoTest {
     @After
     public void tearDown() throws Exception {
         client.close();
+    }
+
+    @Test
+    public void prepareBulk() {
+        MusicDto.SourceDto source = new MusicDto.SourceDto(1, "qq");
+        MusicDto dto1 = new MusicDto(1, "天使", source, Arrays.asList("流行", "国语"));
+        MusicDto dto2 = new MusicDto(2, "火花", source, Arrays.asList("流行", "国语"));
+        BulkRequestBuilder bulk = client.prepareBulk();
+        bulk.add(client.prepareUpdate("music", "music", dto1.getMid() + "").setDoc(gson.toJson(dto1), XContentType.JSON));
+        bulk.add(client.prepareIndex("music", "music", dto2.getMid() + "").setSource(gson.toJson(dto2),XContentType.JSON));
+        BulkResponse response = bulk.get();
     }
 
     @Test
@@ -183,5 +202,10 @@ public class ElasticsearchDemoTest {
                 System.out.println(avg.getValue());
             }
         }
+    }
+
+    @Test
+    public void mget() {
+        client.prepareMultiGet().add("index", "type", "id");
     }
 }
