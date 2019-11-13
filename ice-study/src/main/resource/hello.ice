@@ -1,5 +1,5 @@
-[["java:package:perv.cmy.zerocice"]]
-module demo {
+[["java:package:perv.cmy.zerocice.hello"]]
+module meta {
     interface MyService {
         string hellow();
     };

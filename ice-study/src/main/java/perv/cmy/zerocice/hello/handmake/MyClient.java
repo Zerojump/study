@@ -1,8 +1,7 @@
-package perv.cmy.zerocice.handmake;
+package perv.cmy.zerocice.hello.handmake;
 
-import Ice.Util;
-import perv.cmy.zerocice.demo.MyServicePrx;
-import perv.cmy.zerocice.demo.MyServicePrxHelper;
+import perv.cmy.zerocice.hello.meta.MyServicePrx;
+import perv.cmy.zerocice.hello.meta.MyServicePrxHelper;
 
 /**
  * <p>@author chenmingyi

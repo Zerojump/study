@@ -1,7 +1,7 @@
-package perv.cmy.zerocice.handmake;
+package perv.cmy.zerocice.hello.handmake;
 
 import Ice.Current;
-import perv.cmy.zerocice.demo._MyServiceDisp;
+import perv.cmy.zerocice.hello.meta._MyServiceDisp;
 
 /**
  * <p>@author chenmingyi

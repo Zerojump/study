@@ -1,6 +1,5 @@
-package perv.cmy.zerocice.handmake;
+package perv.cmy.zerocice.hello.handmake;
 
-import Ice.Communicator;
 import Ice.ObjectAdapter;
 import Ice.Util;
 
