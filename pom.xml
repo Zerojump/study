@@ -15,16 +15,14 @@
         <module>design-pattern</module>
         <module>shiro-study</module>
         <module>kafka-study</module>
-        <module>spring-security-study</module>
-        <!--<module>apidoc</module>-->
         <module>zookeeper-study</module>
-        <module>redis-study</module>
         <module>sso-test</module>
         <module>jvm-study</module>
         <module>netty-study</module>
         <module>hadoop-study</module>
         <module>websocket-study</module>
         <module>springboot2-study</module>
+        <module>ice-study</module>
     </modules>
 
     <properties>
