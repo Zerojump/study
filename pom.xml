@@ -23,6 +23,7 @@
         <module>websocket-study</module>
         <module>springboot2-study</module>
         <module>ice-study</module>
+        <module>rocketmq-study</module>
     </modules>
 
     <properties>
