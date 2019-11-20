@@ -1,4 +1,4 @@
-package netty;
+package netty.nio;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;

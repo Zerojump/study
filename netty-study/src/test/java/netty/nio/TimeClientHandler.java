@@ -1,5 +1,6 @@
-package netty;
+package netty.nio;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -11,26 +12,29 @@ import org.slf4j.LoggerFactory;
  * <p>@version 1.0
  * <p>date: 2017/12/6
  */
-public class EchoClientHandler extends ChannelInboundHandlerAdapter {
-    private static final Logger LOG = LoggerFactory.getLogger(EchoClientHandler.class);
-    private String ECHO_REQ = "Hi,man.Welcome to Netty.$_";
+public class TimeClientHandler extends ChannelInboundHandlerAdapter {
+    private static final Logger LOG = LoggerFactory.getLogger(TimeClientHandler.class);
+
     private int counter;
+    private byte[] req;
+
+    public TimeClientHandler() {
+        req = ("QUERY TIME ORDER" + System.getProperty("line.separator")).getBytes();
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        for (int i = 0; i < 10; i++) {
-            ctx.writeAndFlush(Unpooled.copiedBuffer(ECHO_REQ.getBytes()));
+        ByteBuf msg;
+        for (int i = 0; i < 100; i++) {
+            msg = Unpooled.buffer(req.length);
+            msg.writeBytes(req);
+            ctx.writeAndFlush(msg);
         }
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        LOG.info("counter:{}, receive:{}", ++counter, msg);
-    }
-
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        ctx.flush();
+        LOG.info("now is {} ,counter:{}", msg, ++counter);
     }
 
     @Override
