@@ -55,7 +55,7 @@
         <unirest.version>1.4.9</unirest.version>
         <io.jsonwebtoken.jjwt.version>0.7.0</io.jsonwebtoken.jjwt.version>
         <netty.version>4.1.16.Final</netty.version>
-        <hadoop.version>2.6.0-cdh5.7.0</hadoop.version>
+        <hadoop.version>2.7.0</hadoop.version>
         <redisson.version>3.5.5</redisson.version>
         <protobuf.version>2.6.1</protobuf.version>
     </properties>
