@@ -42,7 +42,7 @@
         <log4j2.version>2.7</log4j2.version>
         <log4j-over-slf4j.version>1.7.25</log4j-over-slf4j.version>
         <log4j-slf4j-impl.version>2.9.1</log4j-slf4j-impl.version>
-        <kafka.version>0.10.2.1</kafka.version>
+        <kafka.version>0.10.2.2</kafka.version>
         <!--<kafka.version>0.10.0.0</kafka.version>-->
         <rabbitmq.version>4.1.0</rabbitmq.version>
         <shiro.version>1.3.2</shiro.version>
